@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Calculadora Cidadão</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="prestacao_fixa_title">Simule o financiamento com prestações fixas</string>
+
+
+    <string name="num_meses">Nº. de meses</string>
+    <string name="taxa_juros_mensal">Taxa de juros mensal %</string>
+    <string name="valor_prestaçao">Valor da prestação</string>
+    <string name="msg_valor_prestacao">(Considera-se que a 1a. prestação não seja no ato)</string>
+    <string name="valor_financiado">Valor financiado</string>
+    <string name="msg_valor_financiado">(O valor financiado não inclui o valor da entrada)</string>
+    <string name="error_msg_calc">Informe 3 valores e pressione o botão Calcular para obter o 4º</string>
+    <string name="calcular">Calcular</string>
+</resources>
