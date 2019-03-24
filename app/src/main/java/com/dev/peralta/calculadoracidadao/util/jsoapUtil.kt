@@ -16,7 +16,7 @@ fun String.getResponse(parans: Map<String, String>): Connection.Response =
         .connect(this)
         .method(Connection.Method.POST)
         .userAgent("Mozilla/5.0")
-        .timeout(30 * 1000)
+        .timeout(10 * 1000)
         .data(parans)
         .followRedirects(true)
         .execute()
