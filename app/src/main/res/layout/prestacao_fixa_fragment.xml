@@ -1,120 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.PrestacaoFixaFragment">
-
-    <TextView
-            android:text="@string/prestacao_fixa_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView2" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="8dp" android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="8dp" android:layout_marginRight="8dp"/>
-    <com.google.android.material.textfield.TextInputLayout
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/num_meses"
-            android:theme="@style/Theme.MaterialComponents.DayNight"
-            app:boxStrokeColor="@color/colorPrimary"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            app:hintEnabled="true"
-            app:errorEnabled="true"
-            app:helperTextEnabled="true"
-            android:id="@+id/textInputLayoutDesc"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp" android:layout_marginTop="32dp"
-            app:layout_constraintTop_toBottomOf="@+id/textView2"
-    >
-        <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/numMeses"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number|numberDecimal"/>
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
+            android:layout_height="match_parent"
+            tools:context=".ui.PrestacaoFixaFragment">
+    <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/taxa_juros_mensal"
-            android:theme="@style/Theme.MaterialComponents.DayNight"
-            app:boxStrokeColor="@color/colorPrimary"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            app:hintEnabled="true"
-            app:errorEnabled="true"
-            app:helperTextEnabled="true"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:id="@+id/textInputLayout"
-            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/textInputLayoutDesc">
-        <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/taxaJuroMensal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_height="wrap_content">
+        <androidx.cardview.widget.CardView android:layout_width="match_parent"
+                                           android:layout_height="wrap_content"
+                                           android:layout_gravity="center" app:cardElevation="3dp"
+                                           app:cardCornerRadius="3dp"
+                                           app:layout_constraintTop_toTopOf="parent"
+                                           app:layout_constraintStart_toStartOf="parent"
+                                           app:layout_constraintEnd_toEndOf="parent"
+                                           android:layout_marginTop="32dp" android:id="@+id/cardView2"
+                                           android:layout_marginLeft="8dp" android:layout_marginStart="8dp"
+                                           android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
+                                           app:contentPadding="16dp">
+            <TextView
+                    android:text="@string/prestacao_fixa_title"
+                    android:textAlignment="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:fontFamily="sans-serif-condensed-light"
+                    android:textStyle="bold" android:textSize="18sp"/>
+        </androidx.cardview.widget.CardView>
 
-    <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/valor_prestaçao"
-            android:theme="@style/Theme.MaterialComponents.DayNight"
-            app:boxStrokeColor="@color/colorPrimary"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            app:hintEnabled="true"
-            app:errorEnabled="true"
-            app:helperText="@string/msg_valor_prestacao"
-            app:helperTextEnabled="true"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginLeft="8dp" android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp" android:layout_marginRight="8dp" android:id="@+id/textInputLayout2"
-            app:layout_constraintHorizontal_bias="1.0"
-            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
-        <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/valorPrestacao"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number"/>
-    </com.google.android.material.textfield.TextInputLayout>
+        <androidx.cardview.widget.CardView android:layout_width="match_parent"
+                                           android:layout_height="wrap_content"
+                                           android:layout_gravity="center" app:cardElevation="3dp"
+                                           app:cardCornerRadius="3dp" app:layout_constraintBottom_toBottomOf="parent"
+                                           app:layout_constraintStart_toStartOf="parent"
+                                           app:layout_constraintEnd_toEndOf="parent"
+                                           android:layout_marginLeft="8dp" android:layout_marginStart="8dp"
+                                           android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
+                                           android:id="@+id/cardView"
+                                           app:layout_constraintHorizontal_bias="0.0" android:layout_marginTop="8dp"
+                                           app:layout_constraintTop_toBottomOf="@+id/cardView2"
+                                           android:layout_marginBottom="8dp" app:contentPadding="8dp">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/num_meses"
+                        android:theme="@style/Theme.MaterialComponents.DayNight"
+                        app:boxStrokeColor="@color/colorPrimary"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        app:hintEnabled="true"
+                        app:errorEnabled="true"
+                        app:helperTextEnabled="true"
+                        android:id="@+id/textInputLayoutDesc"
+                        app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent">
+                    <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/numMeses"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number|numberDecimal"/>
+                </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/valor_financiado"
-            android:theme="@style/Theme.MaterialComponents.DayNight"
-            app:boxStrokeColor="@color/colorPrimary"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            app:hintEnabled="true"
-            app:errorEnabled="true"
-            app:helperText="@string/msg_valor_financiado"
-            app:helperTextEnabled="true"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginLeft="8dp" android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp" android:layout_marginRight="8dp" android:id="@+id/textInputLayout3"
-            app:layout_constraintHorizontal_bias="0.0"
-            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
-        <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/valorFinanciado"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number"/>
-    </com.google.android.material.textfield.TextInputLayout>
-    <Button
-            android:text="@string/calcular"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/btCalcular"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="8dp" android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="8dp" android:layout_marginRight="8dp" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.0"
-            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/textInputLayout3"
-            app:layout_constraintVertical_bias="0.39"/>
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/taxa_juros_mensal"
+                        android:theme="@style/Theme.MaterialComponents.DayNight"
+                        app:boxStrokeColor="@color/colorPrimary"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        app:hintEnabled="true"
+                        app:errorEnabled="true"
+                        app:helperTextEnabled="true"
+                        app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:id="@+id/textInputLayout"
+                        android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/textInputLayoutDesc">
+                    <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/taxaJuroMensal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="numberDecimal"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/valor_prestaçao"
+                        android:theme="@style/Theme.MaterialComponents.DayNight"
+                        app:boxStrokeColor="@color/colorPrimary"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        app:hintEnabled="true"
+                        app:errorEnabled="true"
+                        app:helperText="@string/msg_valor_prestacao"
+                        app:helperTextEnabled="true"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
+                        android:id="@+id/textInputLayout2"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+                    <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/valorPrestacao"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/valor_financiado"
+                        android:theme="@style/Theme.MaterialComponents.DayNight"
+                        app:boxStrokeColor="@color/colorPrimary"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        app:hintEnabled="true"
+                        app:errorEnabled="true"
+                        app:helperText="@string/msg_valor_financiado"
+                        app:helperTextEnabled="true"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
+                        android:id="@+id/textInputLayout3"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
+                    <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/valorFinanciado"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"/>
+                </com.google.android.material.textfield.TextInputLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

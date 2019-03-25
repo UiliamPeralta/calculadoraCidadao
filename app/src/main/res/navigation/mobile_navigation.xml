@@ -6,5 +6,5 @@
 
     <fragment android:id="@+id/prestacaoFixaFragment"
               android:name="com.dev.peralta.calculadoracidadao.ui.PrestacaoFixaFragment"
-              android:label="@string/prestacao_fixa_title" tools:layout="@layout/prestacao_fixa_fragment"/>
+              android:label="@string/app_name" tools:layout="@layout/prestacao_fixa_fragment"/>
 </navigation>

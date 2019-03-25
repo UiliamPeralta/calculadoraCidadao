@@ -2,10 +2,8 @@ package com.dev.peralta.calculadoracidadao.ui
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 
@@ -33,6 +31,7 @@ class PrestacaoFixaFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
         viewModel = ViewModelProviders.of(this).get(AppViewModel::class.java)
 
         viewModel.resultFormLiveData.observe(this, Observer {
@@ -40,20 +39,22 @@ class PrestacaoFixaFragment : Fragment() {
         })
 
         viewModel.errorsFormLiveData.observe(this, Observer {
-            if (it != null) Toast.makeText(activity, it, Toast.LENGTH_LONG).show()
+            it?.toast()
         })
 
         viewModel.errorsLiveData.observe(this, Observer {
-            Toast.makeText(activity, it, Toast.LENGTH_LONG).show()
+            it.toast()
         })
-        btCalcular.setOnClickListener {
-            viewModel.query(getPrestacaoFixa())
-        }
 
         valorFinanciado.addTextChangedListener(valorFinanciado.getTextWatcher())
         valorPrestacao.addTextChangedListener(valorPrestacao.getTextWatcher())
 
     }
+
+    private fun String.toast() {
+        Toast.makeText(activity, this, Toast.LENGTH_LONG).show()
+    }
+
 
     private fun getPrestacaoFixa(): PrestacaoFixa {
         val meses = numMeses.parsePercentAndMonth()
@@ -68,5 +69,36 @@ class PrestacaoFixaFragment : Fragment() {
         taxaJuroMensal.addText(parans[1])
         valorPrestacao.setText(parans[2])
         valorFinanciado.setText(parans[3])
+    }
+
+    private fun limpar() {
+        numMeses.setText("")
+        taxaJuroMensal.setText("")
+        valorPrestacao.setText("")
+        valorFinanciado.setText("")
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.menu_prestacao_fixa, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId) {
+            R.id.action_calcular -> {
+                viewModel.query(getPrestacaoFixa())
+                true
+            }
+            R.id.action_limpar -> {
+                limpar()
+                true
+            }
+            R.id.action_exemplo -> {
+                getString(R.string.exemplo).toast()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+
     }
 }

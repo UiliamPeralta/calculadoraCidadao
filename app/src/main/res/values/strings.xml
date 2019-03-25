@@ -17,4 +17,9 @@
     <string name="msg_valor_financiado">(O valor financiado não inclui o valor da entrada)</string>
     <string name="error_msg_calc">Informe 3 valores e pressione o botão Calcular para obter o 4º</string>
     <string name="calcular">Calcular</string>
+    <string name="limpar">Limpar</string>
+    <string name="exemplo">Exemplo</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
