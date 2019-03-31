@@ -8,18 +8,18 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.dev.peralta.calculadoracidadao.R
-import kotlinx.android.synthetic.main.fragment_exemplo.view.*
+import kotlinx.android.synthetic.main.fragment_home.view.*
 
-class ExemploFragment : Fragment() {
+class HomeFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_exemplo, container, false)
-        val url = arguments?.getString("url") ?: ""
-        view.webView.loadUrl(url)
+
+        val view = inflater.inflate(R.layout.fragment_home, container, false)
+        view.webView.loadUrl(getString(R.string.HOME_URL))
         return view
     }
+
 }

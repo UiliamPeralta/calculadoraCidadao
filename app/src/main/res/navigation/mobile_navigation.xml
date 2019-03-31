@@ -2,9 +2,16 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools" android:id="@+id/mobile_navigation"
-            app:startDestination="@id/prestacaoFixaFragment">
+            app:startDestination="@id/homeFragment">
 
     <fragment android:id="@+id/prestacaoFixaFragment"
               android:name="com.dev.peralta.calculadoracidadao.ui.PrestacaoFixaFragment"
-              android:label="@string/app_name" tools:layout="@layout/prestacao_fixa_fragment"/>
+              android:label="@string/app_name" tools:layout="@layout/prestacao_fixa_fragment">
+        <action android:id="@+id/action_prestacaoFixaFragment_to_exemploFragment"
+                app:destination="@id/exemploFragment"/>
+    </fragment>
+    <fragment android:id="@+id/homeFragment" android:name="com.dev.peralta.calculadoracidadao.ui.HomeFragment"
+              android:label="@string/home" tools:layout="@layout/fragment_home"/>
+    <fragment android:id="@+id/exemploFragment" android:name="com.dev.peralta.calculadoracidadao.ui.ExemploFragment"
+              android:label="fragment_exemplo" tools:layout="@layout/fragment_exemplo"/>
 </navigation>

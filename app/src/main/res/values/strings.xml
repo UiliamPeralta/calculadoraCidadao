@@ -7,6 +7,7 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
     <string name="prestacao_fixa_title">Simule o financiamento com prestações fixas</string>
+    <string name="prestacao_fixa_menu_title">Prestações Fixas</string>
 
 
     <string name="num_meses">Nº. de meses</string>
@@ -19,6 +20,7 @@
     <string name="calcular">Calcular</string>
     <string name="limpar">Limpar</string>
     <string name="exemplo">Exemplo</string>
+        <string name="home">Home</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

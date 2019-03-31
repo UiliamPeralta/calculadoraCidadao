@@ -19,6 +19,7 @@ object Repository {
     private var resultForm: MutableLiveData<Array<String>> = MutableLiveData()
     private var errors: MutableLiveData<String> = MutableLiveData()
     private var errorsForm: MutableLiveData<String> = MutableLiveData()
+    private var progress: MutableLiveData<Boolean> = MutableLiveData()
     private var isRequest = false
 
     val resultFormLiveData: LiveData<Array<String>>
@@ -29,6 +30,9 @@ object Repository {
 
     val errorsFormLiveData: LiveData<String>
         get() = errorsForm
+
+    val progressLiveData: LiveData<Boolean>
+        get() = progress
 
     fun getPrestacaoFixa(prestacaoFixa: PrestacaoFixa) {
         val parans = getParamsPrestacoesFixas(
@@ -48,7 +52,7 @@ object Repository {
         override fun doInBackground(vararg params: Map<String, String>?): Boolean {
             Log.i(TAG, "em execução $isRequest")
             params[0]?.let {
-
+                    progress.postValue(true)
                     try {
                         val doc = url.getResponse(it).parse()
                         resultForm.postValue(doc.getValuesForm())
@@ -64,6 +68,7 @@ object Repository {
 
         override fun onPostExecute(result: Boolean) {
             isRequest = result
+            progress.value = result
             Log.i(TAG, "pos execução $isRequest")
         }
 

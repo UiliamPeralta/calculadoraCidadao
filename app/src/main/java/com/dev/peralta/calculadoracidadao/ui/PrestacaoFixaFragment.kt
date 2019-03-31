@@ -6,6 +6,7 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.Toast
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 
 import com.dev.peralta.calculadoracidadao.R
 import com.dev.peralta.calculadoracidadao.model.PrestacaoFixa
@@ -15,10 +16,10 @@ import com.dev.peralta.calculadoracidadao.util.parsePercentAndMonth
 import com.dev.peralta.calculadoracidadao.util.parseValue
 import kotlinx.android.synthetic.main.prestacao_fixa_fragment.*
 
-
 class PrestacaoFixaFragment : Fragment() {
 
     private lateinit var viewModel: AppViewModel
+    private var showMessage = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,13 +47,20 @@ class PrestacaoFixaFragment : Fragment() {
             it.toast()
         })
 
+        viewModel.progressLiveData.observe(this, Observer {
+            if (it) progressBar.visibility = View.VISIBLE else progressBar.visibility = View.INVISIBLE
+        })
+
         valorFinanciado.addTextChangedListener(valorFinanciado.getTextWatcher())
         valorPrestacao.addTextChangedListener(valorPrestacao.getTextWatcher())
 
     }
 
     private fun String.toast() {
-        Toast.makeText(activity, this, Toast.LENGTH_LONG).show()
+        if (showMessage) {
+            showMessage = !showMessage
+            Toast.makeText(activity, this, Toast.LENGTH_LONG).show()
+        }
     }
 
 
@@ -86,6 +94,7 @@ class PrestacaoFixaFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId) {
             R.id.action_calcular -> {
+                showMessage = true
                 viewModel.query(getPrestacaoFixa())
                 true
             }
@@ -94,7 +103,9 @@ class PrestacaoFixaFragment : Fragment() {
                 true
             }
             R.id.action_exemplo -> {
-                getString(R.string.exemplo).toast()
+                val url = Bundle()
+                url.putString("url", getString(R.string.EX_PRESTACAO_FIXA_URL))
+                findNavController().navigate(R.id.action_prestacaoFixaFragment_to_exemploFragment, url)
                 true
             }
             else -> super.onOptionsItemSelected(item)

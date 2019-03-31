@@ -12,6 +12,7 @@ class AppViewModel : ViewModel() {
     private val queryPrestacaoFixa = MutableLiveData<PrestacaoFixa>()
 
 
+    val progressLiveData = Repository.progressLiveData
 
     val resultFormLiveData: LiveData<Array<String>> =
             Transformations.switchMap(queryPrestacaoFixa) {
