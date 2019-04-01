@@ -1,11 +1,10 @@
 package com.dev.peralta.calculadoracidadao
 
+import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.core.view.GravityCompat
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import android.view.Menu
-import android.view.MenuItem
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -38,9 +37,9 @@ class MainActivity : AppCompatActivity() {
         val toggle = ActionBarDrawerToggle(
             this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
         )
-
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
+        packageManager.setVersion()
     }
 
     private fun setupActionBar(navController: NavController,
@@ -59,23 +58,11 @@ class MainActivity : AppCompatActivity() {
             super.onBackPressed()
         }
     }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.main, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        return when (item.itemId) {
-            R.id.action_settings -> true
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
-
     override fun onSupportNavigateUp() =
             findNavController(R.id.my_nav_host_fragment).navigateUp(appBarConfiguration)
+
+    private fun PackageManager.setVersion() {
+        val version = getPackageInfo(packageName, 0).versionName
+        nav_view.menu.findItem(R.id.versao).title = "${getString(R.string.versao)} $version"
+    }
 }

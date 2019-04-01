@@ -9,21 +9,60 @@
                 android:icon="@drawable/ic_menu_home"
                 android:title="@string/home"/>
         <item
-                android:id="@+id/dep_regular"
-                android:icon="@drawable/ic_menu_date"
+                android:id="@+id/depositoRegularFragment"
+                android:icon="@drawable/ic_menu_deposito"
                 android:title="@string/dep_regular_menu_title"/>
         <item
                 android:id="@+id/prestacaoFixaFragment"
                 android:icon="@drawable/ic_menu_date"
                 android:title="@string/prestacao_fixa_menu_title"/>
+        <item
+                android:id="@+id/p"
+                android:icon="@drawable/ic_menu_capital"
+                android:title="@string/val_futuro_capital"/>
     </group>
 
     <item android:title="@string/correcao_valores">
         <menu>
             <item
                     android:id="@+id/nav_share"
-                    android:icon="@drawable/ic_menu_home"
-                    android:title="@string/exemplo"/>
+                    android:icon="@drawable/ic_menu_1"
+                    android:title="@string/indice_preco"/>
+
+            <item
+                    android:id="@+id/nav_share1"
+                    android:icon="@drawable/ic_menu_2"
+                    android:title="@string/tr"/>
+            <item
+                    android:id="@+id/nav_share2"
+                    android:icon="@drawable/ic_menu_3"
+                    android:title="@string/poupanca"/>
+            <item
+                    android:id="@+id/nav_share3"
+                    android:icon="@drawable/ic_menu_4"
+                    android:title="@string/selic"/>
+            <item
+                    android:id="@+id/nav_share4"
+                    android:icon="@drawable/ic_menu_5"
+                    android:title="@string/cdi"/>
+        </menu>
+    </item>
+
+    <item android:title="@string/outros">
+        <menu>
+            <item
+                    android:id="@+id/politica"
+                    android:icon="@drawable/ic_menu_politica"
+                    android:title="@string/politica"/>
+
+            <item
+                    android:id="@+id/apps"
+                    android:icon="@drawable/ic_menu_get_app"
+                    android:title="@string/apps"/>
+            <item
+                    android:id="@+id/versao"
+                    android:icon="@drawable/ic_menu_android"
+                    android:title="@string/versao"/>
         </menu>
     </item>
 

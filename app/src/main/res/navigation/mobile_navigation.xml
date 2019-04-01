@@ -14,4 +14,7 @@
               android:label="@string/home" tools:layout="@layout/fragment_home"/>
     <fragment android:id="@+id/exemploFragment" android:name="com.dev.peralta.calculadoracidadao.ui.ExemploFragment"
               android:label="@string/exemplo" tools:layout="@layout/fragment_exemplo"/>
+    <fragment android:id="@+id/depositoRegularFragment"
+              android:name="com.dev.peralta.calculadoracidadao.ui.DepositoRegularFragment"
+              android:label="fragment_deposito_regular" tools:layout="@layout/fragment_deposito_regular"/>
 </navigation>
