@@ -19,15 +19,13 @@ import kotlinx.android.synthetic.main.prestacao_fixa_fragment.*
 class PrestacaoFixaFragment : Fragment() {
 
     private lateinit var viewModel: AppViewModel
-    private var showMessage = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.prestacao_fixa_fragment, container, false)
         setHasOptionsMenu(true)
-        return view
+        return inflater.inflate(R.layout.prestacao_fixa_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -35,7 +33,7 @@ class PrestacaoFixaFragment : Fragment() {
 
         viewModel = ViewModelProviders.of(this).get(AppViewModel::class.java)
 
-        viewModel.resultFormLiveData.observe(this, Observer {
+        viewModel.resultFormLiveDataPrestacaoFixa.observe(this, Observer {
             setPrestacaoFixa(it)
         })
 
@@ -57,10 +55,7 @@ class PrestacaoFixaFragment : Fragment() {
     }
 
     private fun String.toast() {
-        if (showMessage) {
-            showMessage = !showMessage
-            Toast.makeText(activity, this, Toast.LENGTH_LONG).show()
-        }
+        Toast.makeText(activity, this, Toast.LENGTH_LONG).show()
     }
 
 
@@ -94,7 +89,6 @@ class PrestacaoFixaFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId) {
             R.id.action_calcular -> {
-                showMessage = true
                 viewModel.query(getPrestacaoFixa())
                 true
             }

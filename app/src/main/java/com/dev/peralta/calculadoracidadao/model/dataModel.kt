@@ -6,3 +6,10 @@ data class PrestacaoFixa(
     val valorPrestacao: String,
     val valorFinanciado: String
 )
+
+data class DepositoRegular(
+    val meses: String,
+    val taxaJurosMensal: String,
+    val valorDepositoRegular: String,
+    val valorFinal: String
+)

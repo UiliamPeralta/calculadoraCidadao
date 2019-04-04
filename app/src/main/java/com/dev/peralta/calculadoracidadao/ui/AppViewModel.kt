@@ -4,31 +4,44 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
+import com.dev.peralta.calculadoracidadao.model.DepositoRegular
 import com.dev.peralta.calculadoracidadao.model.PrestacaoFixa
 import com.dev.peralta.calculadoracidadao.repository.Repository
 
 class AppViewModel : ViewModel() {
 
     private val queryPrestacaoFixa = MutableLiveData<PrestacaoFixa>()
+    private val queryDepositoRegular = MutableLiveData<DepositoRegular>()
+    private val repository = Repository()
 
 
-    val progressLiveData = Repository.progressLiveData
+    val progressLiveData = repository.progressLiveData
 
-    val resultFormLiveData: LiveData<Array<String>> =
+    val resultFormLiveDataPrestacaoFixa: LiveData<Array<String>> =
             Transformations.switchMap(queryPrestacaoFixa) {
-                Repository.getPrestacaoFixa(it)
-                Repository.resultFormLiveData
+                repository.getPrestacaoFixa(it)
+                repository.resultFormLiveData
+            }
+
+    val resultFormLiveDataDepositoRegular =
+            Transformations.switchMap(queryDepositoRegular) {
+                repository.getDepositoRegular(it)
+                repository.resultFormLiveData
             }
 
     val errorsLiveData: LiveData<String> =
-            Transformations.map(Repository.errorsLiveData) { it }
+            Transformations.map(repository.errorsLiveData) { it }
 
     val errorsFormLiveData: LiveData<String?> =
-            Transformations.map(Repository.errorsFormLiveData) { it }
+            Transformations.map(repository.errorsFormLiveData) { it }
 
 
 
     fun query(prestacaoFixa: PrestacaoFixa) {
          queryPrestacaoFixa.postValue(prestacaoFixa)
+    }
+
+    fun query(depositoRegular: DepositoRegular) {
+        queryDepositoRegular.postValue(depositoRegular)
     }
 }

@@ -12,6 +12,7 @@
     <string name="num_meses">Nº. de meses</string>
     <string name="taxa_juros_mensal">Taxa de juros mensal %</string>
     <string name="valor_prestaçao">Valor da prestação</string>
+    <string name="msg_valor_deposito">(depósito realizado no início do mês)</string>
     <string name="msg_valor_prestacao">(Considera-se que a 1a. prestação não seja no ato)</string>
     <string name="valor_financiado">Valor financiado</string>
     <string name="msg_valor_financiado">(O valor financiado não inclui o valor da entrada)</string>
@@ -30,6 +31,9 @@
     <string name="politica">Política de Privacidade</string>
     <string name="versao">Versão</string>
     <string name="home">Home</string>
+    <string name="depositoRegularTitle">Simule a aplicação com depósitos regulares</string>
+    <string name="valor_deposito_regular">Valor do depósito regular</string>
+    <string name="valor_obtido_final">Valor obtido ao final</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

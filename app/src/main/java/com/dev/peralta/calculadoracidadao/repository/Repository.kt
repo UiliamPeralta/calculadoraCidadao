@@ -1,20 +1,21 @@
 package com.dev.peralta.calculadoracidadao.repository
 
 import android.os.AsyncTask
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.dev.peralta.calculadoracidadao.TAG
+import com.dev.peralta.calculadoracidadao.model.DepositoRegular
 import com.dev.peralta.calculadoracidadao.model.PrestacaoFixa
 import getMsgError
+import getParamsAplicacaoDepositosRegulares
 import getParamsPrestacoesFixas
 import getResponse
 import urlPrestacoesFixas
 import getValuesForm
+import urlDepositosRegulares
 import java.io.IOException
 
 
-object Repository {
+class Repository {
 
     private var resultForm: MutableLiveData<Array<String>> = MutableLiveData()
     private var errors: MutableLiveData<String> = MutableLiveData()
@@ -44,22 +45,35 @@ object Repository {
 
         if (!isRequest) {
             isRequest = true
-            TaskForm(urlPrestacoesFixas).execute(parans)
+            TaskForm(urlPrestacoesFixas, this).execute(parans)
         }
     }
 
-    private class TaskForm(private val url: String) : AsyncTask<Map<String, String>, Unit, Boolean>() {
+    fun getDepositoRegular(depositoRegular: DepositoRegular) {
+        val parans = getParamsAplicacaoDepositosRegulares(
+            depositoRegular.meses,
+            depositoRegular.taxaJurosMensal,
+            depositoRegular.valorDepositoRegular,
+            depositoRegular.valorFinal
+        )
+
+        if (!isRequest) {
+            isRequest = true
+            TaskForm(urlDepositosRegulares, this).execute(parans)
+        }
+    }
+
+    private class TaskForm(private val url: String, private val repository: Repository) : AsyncTask<Map<String, String>, Unit, Boolean>() {
         override fun doInBackground(vararg params: Map<String, String>?): Boolean {
-            Log.i(TAG, "em execução $isRequest")
             params[0]?.let {
-                    progress.postValue(true)
+                    repository.progress.postValue(true)
                     try {
                         val doc = url.getResponse(it).parse()
-                        resultForm.postValue(doc.getValuesForm())
-                        errorsForm.postValue(doc.getMsgError())
+                        repository.resultForm.postValue(doc.getValuesForm())
+                        repository.errorsForm.postValue(doc.getMsgError())
 
                     } catch (ex: IOException) {
-                        errors.postValue( ex.message ?: "Fail Connection")
+                        repository.errors.postValue( ex.message ?: "Fail Connection")
                     }
                 }
 
@@ -67,9 +81,8 @@ object Repository {
         }
 
         override fun onPostExecute(result: Boolean) {
-            isRequest = result
-            progress.value = result
-            Log.i(TAG, "pos execução $isRequest")
+            repository.isRequest = result
+            repository.progress.value = result
         }
 
     }
