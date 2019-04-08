@@ -3,4 +3,6 @@
     <string name="HOME_URL">file:///android_asset/home.html</string>
     <string name="EX_DEP_REGULARES_URL">file:///android_asset/exemplo_aplicacao_depositos_regulares.html</string>
     <string name="EX_PRESTACAO_FIXA_URL">file:///android_asset/exemplo_financiamento_prestacao_fixa.html</string>
+    <string name="EX_VALOR_FUTURO_URL">file:///android_asset/exemplo_valor_futuro_capital.html</string>
+
 </resources>

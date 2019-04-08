@@ -17,7 +17,7 @@
                 android:icon="@drawable/ic_menu_date"
                 android:title="@string/prestacao_fixa_menu_title"/>
         <item
-                android:id="@+id/p"
+                android:id="@+id/valorFuturoFragment"
                 android:icon="@drawable/ic_menu_capital"
                 android:title="@string/val_futuro_capital"/>
     </group>

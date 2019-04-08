@@ -5,13 +5,16 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.dev.peralta.calculadoracidadao.model.DepositoRegular
 import com.dev.peralta.calculadoracidadao.model.PrestacaoFixa
+import com.dev.peralta.calculadoracidadao.model.ValorFuturoCapital
 import getMsgError
 import getParamsAplicacaoDepositosRegulares
 import getParamsPrestacoesFixas
+import getParamsValorFuturoCapital
 import getResponse
 import urlPrestacoesFixas
 import getValuesForm
 import urlDepositosRegulares
+import urlValorFuturoCapital
 import java.io.IOException
 
 
@@ -60,6 +63,20 @@ class Repository {
         if (!isRequest) {
             isRequest = true
             TaskForm(urlDepositosRegulares, this).execute(parans)
+        }
+    }
+
+    fun getValorFuturo(valorFuturoCapital: ValorFuturoCapital) {
+        val parans = getParamsValorFuturoCapital(
+            valorFuturoCapital.meses,
+            valorFuturoCapital.taxaJurosMensal,
+            valorFuturoCapital.capitalAtual,
+            valorFuturoCapital.valorFinal
+        )
+
+        if (!isRequest) {
+            isRequest = true
+            TaskForm(urlValorFuturoCapital, this).execute(parans)
         }
     }
 

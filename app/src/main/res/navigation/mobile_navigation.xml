@@ -18,10 +18,17 @@
               android:label="@string/exemplo" tools:layout="@layout/fragment_exemplo"/>
     <fragment android:id="@+id/depositoRegularFragment"
               android:name="com.dev.peralta.calculadoracidadao.ui.DepositoRegularFragment"
-              android:label="fragment_deposito_regular" tools:layout="@layout/fragment_deposito_regular">
+              android:label="@string/app_name" tools:layout="@layout/fragment_deposito_regular">
         <action android:id="@+id/action_depositoRegularFragment_to_exemploFragment"
                 app:destination="@id/exemploFragment" app:enterAnim="@anim/nav_default_enter_anim"
                 app:exitAnim="@anim/nav_default_exit_anim" app:popEnterAnim="@anim/nav_default_pop_enter_anim"
                 app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+    </fragment>
+    <fragment android:id="@+id/valorFuturoFragment"
+              android:name="com.dev.peralta.calculadoracidadao.ui.ValorFuturoFragment"
+              android:label="@string/app_name" tools:layout="@layout/fragment_valor_futuro">
+        <action android:id="@+id/action_valorFuturoFragment_to_exemploFragment" app:destination="@id/exemploFragment"
+                app:enterAnim="@anim/nav_default_enter_anim" app:exitAnim="@anim/nav_default_exit_anim"
+                app:popEnterAnim="@anim/nav_default_pop_enter_anim" app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
     </fragment>
 </navigation>

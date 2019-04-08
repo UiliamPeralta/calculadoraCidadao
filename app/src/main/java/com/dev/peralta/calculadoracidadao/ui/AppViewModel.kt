@@ -6,12 +6,14 @@ import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import com.dev.peralta.calculadoracidadao.model.DepositoRegular
 import com.dev.peralta.calculadoracidadao.model.PrestacaoFixa
+import com.dev.peralta.calculadoracidadao.model.ValorFuturoCapital
 import com.dev.peralta.calculadoracidadao.repository.Repository
 
 class AppViewModel : ViewModel() {
 
     private val queryPrestacaoFixa = MutableLiveData<PrestacaoFixa>()
     private val queryDepositoRegular = MutableLiveData<DepositoRegular>()
+    private val queryValorFuturoCapital = MutableLiveData<ValorFuturoCapital>()
     private val repository = Repository()
 
 
@@ -29,6 +31,12 @@ class AppViewModel : ViewModel() {
                 repository.resultFormLiveData
             }
 
+    val resultFormLiveDataValorFuturoCapital =
+        Transformations.switchMap(queryValorFuturoCapital) {
+            repository.getValorFuturo(it)
+            repository.resultFormLiveData
+        }
+
     val errorsLiveData: LiveData<String> =
             Transformations.map(repository.errorsLiveData) { it }
 
@@ -43,5 +51,9 @@ class AppViewModel : ViewModel() {
 
     fun query(depositoRegular: DepositoRegular) {
         queryDepositoRegular.postValue(depositoRegular)
+    }
+
+    fun query(valorFuturoCapital: ValorFuturoCapital) {
+        queryValorFuturoCapital.postValue(valorFuturoCapital)
     }
 }

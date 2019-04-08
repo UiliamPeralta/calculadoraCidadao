@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.prestacao_fixa_fragment.*
 class PrestacaoFixaFragment : Fragment() {
 
     private lateinit var viewModel: AppViewModel
-
+    private var showMsg = true
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -55,7 +55,10 @@ class PrestacaoFixaFragment : Fragment() {
     }
 
     private fun String.toast() {
-        Toast.makeText(activity, this, Toast.LENGTH_LONG).show()
+        if (showMsg) {
+            Toast.makeText(activity, this, Toast.LENGTH_LONG).show()
+            showMsg = false
+        }
     }
 
 
@@ -90,6 +93,7 @@ class PrestacaoFixaFragment : Fragment() {
         return when(item.itemId) {
             R.id.action_calcular -> {
                 viewModel.query(getPrestacaoFixa())
+                showMsg = true
                 true
             }
             R.id.action_limpar -> {
@@ -104,6 +108,5 @@ class PrestacaoFixaFragment : Fragment() {
             }
             else -> super.onOptionsItemSelected(item)
         }
-
     }
 }

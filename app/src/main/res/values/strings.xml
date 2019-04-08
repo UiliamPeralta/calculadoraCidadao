@@ -5,6 +5,7 @@
     <string name="nav_header_subtitle">peraltadesenvolvimento@gmail.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+    <string name="valor_futuro_title">Simule o valor futuro de um capital</string>
     <string name="prestacao_fixa_title">Simule o financiamento com prestações fixas</string>
     <string name="prestacao_fixa_menu_title">Prestações Fixas</string>
     <string name="dep_regular_menu_title">Depósitos Regulares</string>
@@ -31,9 +32,10 @@
     <string name="politica">Política de Privacidade</string>
     <string name="versao">Versão</string>
     <string name="home">Home</string>
-    <string name="depositoRegularTitle">Simule a aplicação com depósitos regulares</string>
+    <string name="deposito_regular_title">Simule a aplicação com depósitos regulares</string>
     <string name="valor_deposito_regular">Valor do depósito regular</string>
     <string name="valor_obtido_final">Valor obtido ao final</string>
+    <string name="capital_atual">Capital atual</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

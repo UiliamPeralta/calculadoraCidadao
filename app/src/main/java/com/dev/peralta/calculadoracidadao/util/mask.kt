@@ -4,6 +4,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.widget.EditText
 import android.widget.TextView
+import java.lang.NumberFormatException
 import java.math.BigDecimal
 import java.text.NumberFormat
 
@@ -14,14 +15,19 @@ fun EditText.getTextWatcher(): TextWatcher {
             s?.let {
                 if (it.isNotEmpty()) {
                     removeTextChangedListener(this)
-                    val clearString = s.replace("""\D""".toRegex(), "")
-                    val parsed = BigDecimal(clearString)
-                        .setScale(2, BigDecimal.ROUND_HALF_EVEN)
-                        .divide(BigDecimal(100), BigDecimal.ROUND_HALF_EVEN)
-                    val formatted = format.format(parsed)
-                    setText(formatted)
-                    setSelection(formatted.length)
-                    addTextChangedListener(this)
+                    try {
+                        val clearString = s.replace("""\D""".toRegex(), "")
+                        val parsed = BigDecimal(clearString)
+                            .setScale(2, BigDecimal.ROUND_HALF_EVEN)
+                            .divide(BigDecimal(100), BigDecimal.ROUND_HALF_EVEN)
+                        val formatted = format.format(parsed)
+                        setText(formatted)
+                        setSelection(formatted.length)
+                    } catch (ex: NumberFormatException) {
+                        setText(format.format(0))
+                    } finally {
+                        addTextChangedListener(this)
+                    }
                 }
             }
         }
@@ -39,7 +45,7 @@ fun TextView.addText(text: String) {
 }
 
 fun TextView.parseValue() =
-        text.replace("[.R$]".toRegex(), "")
+    text.replace("[.R$]".toRegex(), "")
 
 fun TextView.parsePercentAndMonth() =
     text.toString().replace(".", ",")
