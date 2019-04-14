@@ -68,7 +68,7 @@ fun Document.getValuesForm(): Array<String> {
 // Correção de valores
 // Correção de valor por índices de preços
 
-fun getParamsCorrecaoIndice(vararg values: String): Map<String, String> {
+fun getParamsCorrecaoIndicePreco(vararg values: String): Map<String, String> {
     val params = mutableMapOf<String, String>()
     params["selIndice"] = values[0]
     params["dataInicial"] = values[1]

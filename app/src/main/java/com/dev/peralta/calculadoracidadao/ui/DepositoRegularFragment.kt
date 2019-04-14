@@ -60,6 +60,7 @@ class DepositoRegularFragment : Fragment() {
         }
     }
 
+
     private fun limpar() {
         numMeses.setText("")
         taxaJuroMensal.setText("")

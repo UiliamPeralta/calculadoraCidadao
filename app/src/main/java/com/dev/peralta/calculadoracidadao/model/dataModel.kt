@@ -20,3 +20,10 @@ data class ValorFuturoCapital(
     val capitalAtual: String,
     val valorFinal: String
 )
+
+data class CorrecaoIndicePreco(
+    val selIndice: String,
+    val dataInicial: String,
+    val dataFinal: String,
+    val valorCorrecao: String
+)

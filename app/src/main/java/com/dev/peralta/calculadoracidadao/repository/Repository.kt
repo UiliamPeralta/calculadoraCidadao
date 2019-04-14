@@ -3,16 +3,19 @@ package com.dev.peralta.calculadoracidadao.repository
 import android.os.AsyncTask
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.dev.peralta.calculadoracidadao.model.CorrecaoIndicePreco
 import com.dev.peralta.calculadoracidadao.model.DepositoRegular
 import com.dev.peralta.calculadoracidadao.model.PrestacaoFixa
 import com.dev.peralta.calculadoracidadao.model.ValorFuturoCapital
 import getMsgError
 import getParamsAplicacaoDepositosRegulares
+import getParamsCorrecaoIndicePreco
 import getParamsPrestacoesFixas
 import getParamsValorFuturoCapital
 import getResponse
 import urlPrestacoesFixas
 import getValuesForm
+import urlCorrigirPorIndice
 import urlDepositosRegulares
 import urlValorFuturoCapital
 import java.io.IOException
@@ -67,7 +70,7 @@ class Repository {
     }
 
     fun getValorFuturo(valorFuturoCapital: ValorFuturoCapital) {
-        val parans = getParamsValorFuturoCapital(
+        val params = getParamsValorFuturoCapital(
             valorFuturoCapital.meses,
             valorFuturoCapital.taxaJurosMensal,
             valorFuturoCapital.capitalAtual,
@@ -76,7 +79,19 @@ class Repository {
 
         if (!isRequest) {
             isRequest = true
-            TaskForm(urlValorFuturoCapital, this).execute(parans)
+            TaskForm(urlValorFuturoCapital, this).execute(params)
+        }
+    }
+
+    fun getCorrecaoIndicePreco(correcaoIndicePreco: CorrecaoIndicePreco) {
+        with(correcaoIndicePreco) {
+            val params = getParamsCorrecaoIndicePreco(
+                selIndice, dataInicial, dataFinal, valorCorrecao
+            )
+            if (!isRequest) {
+                isRequest = true
+                TaskForm(urlCorrigirPorIndice, this@Repository).execute(params)
+            }
         }
     }
 

@@ -36,6 +36,12 @@
     <string name="valor_deposito_regular">Valor do depósito regular</string>
     <string name="valor_obtido_final">Valor obtido ao final</string>
     <string name="capital_atual">Capital atual</string>
+    <string name="correção_valor_indices_precos">Correção de valor por índices de preços</string>
+    <string name="sel_indice_correção">Selecione o índice para a correção</string>
+    <string name="valor_ser_corrigido">Valor a ser corrigido </string>
+    <string name="data_inicial">Data inicial (MM/AAAA)</string>
+    <string name="data_final">Data final (MM/AAAA)</string>
+    <string name="inclui_taxa_inicial">(Inclui a taxa do mês inicial)</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
